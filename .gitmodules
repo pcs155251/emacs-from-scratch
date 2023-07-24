@@ -1,9 +1,0 @@
-[submodule "lib/use-package"]
-	path = lib/use-package
-	url = https://github.com/jwiegley/use-package
-[submodule "lib/vertico"]
-	path = lib/vertico
-	url = https://github.com/minad/vertico
-[submodule "lib/evil"]
-	path = lib/evil
-	url = https://github.com/emacs-evil/evil.git
