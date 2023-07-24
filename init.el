@@ -125,6 +125,9 @@
   :bind (("C-x g" . magit))
   )
 
+
+
+
 ;;When installing a package which modifies a form used at the top-level
 ;;(e.g. a package which adds a use-package key word),
 ;;use `elpaca-wait' to block until that package has been installed/configured.
