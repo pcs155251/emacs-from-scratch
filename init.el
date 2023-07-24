@@ -6,8 +6,11 @@
 ;; what variables specify), the help system can provide.
 
 
-;; TODO Review yt emacs element about elpaca
-;; TODO Try fresh install the config
+;; TODO Org mode
+;; TODO Separate init.el
+;; TODO Elpaca add repos
+;; TODO Key binding to enable/disable evil mode
+;; TODO Shortcut to restart emacs
 
 
 (setq user-full-name "Julian Lee"
@@ -96,13 +99,12 @@
 ;; Block until current queue processed.
 (elpaca-wait)
 
-;;; Vim Bindings
+;; Vim bindings
 (use-package evil
   :demand t
-  :bind (("<escape>" . keyboard-escape-quit))
   :init
   ;; allows for using cgn
-  ;; (setq evil-search-module 'evil-search)
+  (setq evil-search-module 'evil-search)
   (setq evil-want-keybinding nil)
   ;; no vim insert bindings
   ;; (setq evil-undo-system 'undo-fu)
@@ -110,13 +112,17 @@
   (evil-mode 1)
   )
 
-;; vertico completion
+;; Vertical completion better than default
 (use-package vertico
-  :load-path "lib/vertico"
   :init
   (vertico-mode)
   ;; Enable cycling for `vertico-next' and `vertico-previous'.
   (setq vertico-cycle t)
+  )
+
+;; Magit, git for emacs
+(use-package magit
+  :bind (("C-x g" . magit))
   )
 
 ;;When installing a package which modifies a form used at the top-level
@@ -171,6 +177,19 @@
 ;; 'doom-modeline
 ;; 'nerd-icons
 ;; 'eglot
+
+;; backup packages
+;; bind-key
+;; compat
+;; elpaca-use-package
+;; evil 
+;; evil
+;; goto-chg 
+;; goto-chg 
+;; use-package 
+;; use-package 
+;; use-package 
+;; vertico 
 
 ;; Miscellaneous options
 (setq-default major-mode
