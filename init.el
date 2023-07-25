@@ -132,7 +132,8 @@
            ("C-k" . vertico-previous)
            ("C-f" . vertico-exit)
            :map minibuffer-local-map
-           ;;("M-h" . backward-kill-word))
+           ;;("M-h" . backward-kill-word)
+        )
   :custom (vertico-cycle t) ;; Enable cycling for `vertico-next' and `vertico-previous'.
   :init (vertico-mode)
 )
