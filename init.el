@@ -6,6 +6,7 @@
 ;; what variables specify), the help system can provide.
 
 
+;; TODO Combine face settings with ef-theme
 ;; TODO Org mode
 ;; TODO Separate init.el
 ;; TODO Elpaca add repos, fix version
@@ -16,9 +17,13 @@
 (setq user-full-name "Julian Lee"
       user-mail-address "pcs155251@gmail.com")
 
-;; Load a custom theme
-;; Requires Emacs 28
-(load-theme 'modus-vivendi t)
+
+;; load ef-themes
+(use-package ef-themes
+  :init
+  (setq ef-themes-to-toggle '(ef-trio-dark ef-summer))
+  (ef-themes-select 'ef-trio-dark)
+  )
 
 ;; Set default font face
 ;; (set-face-attribute 'default nil :font "Ligamononoki Nerd Font" :height 140)
@@ -124,14 +129,6 @@
 (use-package magit
   :bind (("C-x g" . magit))
   )
-
-;; load ef-themes
-(use-package ef-themes
-  :init
-  (setq ef-themes-to-toggle '(ef-trio-dark ef-summer))
-  (ef-themes-select 'ef-trio-dark)
-  )
-
 
 ;;When installing a package which modifies a form used at the top-level
 ;;(e.g. a package which adds a use-package key word),
