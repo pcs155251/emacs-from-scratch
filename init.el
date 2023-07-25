@@ -8,8 +8,8 @@
 
 ;; TODO Org mode
 ;; TODO Separate init.el
-;; TODO Elpaca add repos
-;; TODO Key binding to enable/disable evil mode
+;; TODO Elpaca add repos, fix version
+;; TODO Key binding conflict? search all key bindings
 ;; TODO Shortcut to restart emacs
 
 
@@ -125,7 +125,12 @@
   :bind (("C-x g" . magit))
   )
 
-
+;; load ef-themes
+(use-package ef-themes
+  :init
+  (setq ef-themes-to-toggle '(ef-trio-dark ef-summer))
+  (ef-themes-select 'ef-trio-dark)
+  )
 
 
 ;;When installing a package which modifies a form used at the top-level
