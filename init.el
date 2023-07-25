@@ -8,6 +8,7 @@
 
 ;; TODO Combine face settings with ef-theme
 ;; TODO Org mode
+;; TODO Meta key wierd, vertico delete one word
 ;; TODO Separate init.el
 ;; TODO Elpaca add repos, fix version
 ;; TODO Key binding conflict? search all key bindings
@@ -17,17 +18,6 @@
 (setq user-full-name "Julian Lee"
       user-mail-address "pcs155251@gmail.com")
 
-
-;; load ef-themes
-(use-package ef-themes
-  :init
-  (setq ef-themes-to-toggle '(ef-trio-dark ef-summer))
-  (ef-themes-select 'ef-trio-dark)
-  )
-
-;; Set default font face
-;; (set-face-attribute 'default nil :font "Ligamononoki Nerd Font" :height 140)
-(set-face-attribute 'default nil :family "Iosevka" :height 125 :width 'expanded)
 
 ;; Set relative line
 (setq display-line-numbers-type `relative)
@@ -104,6 +94,19 @@
 ;; Block until current queue processed.
 (elpaca-wait)
 
+
+;; load ef-themes
+(use-package ef-themes
+  :init
+  (setq ef-themes-to-toggle '(ef-maris-dark ef-summer))
+  (ef-themes-select 'ef-maris-dark)
+  )
+
+;; Set default font face
+;; (set-face-attribute 'default nil :font "Ligamononoki Nerd Font" :height 140)
+(set-face-attribute 'default nil :family "Iosevka" :height 125 :width 'expanded)
+
+
 ;; Vim bindings
 (use-package evil
   :demand t
@@ -115,20 +118,29 @@
   ;; (setq evil-undo-system 'undo-fu)
   :config
   (evil-mode 1)
-  )
+)
+(use-package evil-collection
+  :after evil
+  :init (evil-collection-init)
+)
 
 ;; Vertical completion better than default
 (use-package vertico
-  :init
-  (vertico-mode)
-  ;; Enable cycling for `vertico-next' and `vertico-previous'.
-  (setq vertico-cycle t)
-  )
+  :demand t
+  :bind (:map vertico-map
+           ("C-j" . vertico-next)
+           ("C-k" . vertico-previous)
+           ("C-f" . vertico-exit)
+           :map minibuffer-local-map
+           ;;("M-h" . backward-kill-word))
+  :custom (vertico-cycle t) ;; Enable cycling for `vertico-next' and `vertico-previous'.
+  :init (vertico-mode)
+)
 
 ;; Magit, git for emacs
 (use-package magit
   :bind (("C-x g" . magit))
-  )
+)
 
 ;;When installing a package which modifies a form used at the top-level
 ;;(e.g. a package which adds a use-package key word),
@@ -209,4 +221,3 @@
 (savehist-mode t)
 (recentf-mode t)
 (defalias 'yes-or-no-p #'y-or-n-p)
-
