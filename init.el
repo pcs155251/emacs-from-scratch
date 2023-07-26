@@ -9,6 +9,8 @@
 ;; TODO Combine face settings with ef-theme
 ;; TODO Meta key wierd, vertico delete one word
 ;; TODO Org mode
+;; TODO Font face
+;; TODO Ivy completion with recentf
 ;; TODO Separate init.el
 ;; TODO Elpaca add repos, fix version
 ;; TODO Git graph?
@@ -116,6 +118,7 @@
        (t variable-pitch regular 1.)
     )
   )
+  (setq ef-themes-mixed-fonts t)
   (ef-themes-select 'ef-maris-dark)
 )
 
@@ -163,6 +166,7 @@
 )
 
 ;; Org mode settings
+;; (add-hook 'org-mode-hook 'variable-pitch-mode)
 (add-hook 'org-mode-hook (lambda () (setq-local line-spacing 0.8)))
 
 
@@ -245,3 +249,7 @@
 (savehist-mode t)
 (recentf-mode t)
 (defalias 'yes-or-no-p #'y-or-n-p)
+
+;;
+(require 'recentf)
+(recentf-mode 1)
