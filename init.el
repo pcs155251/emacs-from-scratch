@@ -103,16 +103,17 @@
   (setq ef-themes-to-toggle '(ef-maris-dark ef-summer))
   (setq ef-themes-headings ; read the manual's entry or the doc string
     '(
-       (0 variable-pitch light 2.0)
-       (1 variable-pitch light 1.4)
+       ; absence of weight means `bold'
+       (0 variable-pitch regular 2.0)
+       (1 variable-pitch regular 1.4)
        (2 variable-pitch regular 1.35)
        (3 variable-pitch regular 1.3)
        (4 variable-pitch regular 1.25)
-       (5 variable-pitch 1.2) ; absence of weight means `bold'
-       (6 variable-pitch 1.15)
-       (7 variable-pitch 1.1)
-       (8 variable-pitch 1.05)
-       (t variable-pitch 1.)
+       (5 variable-pitch regular 1.2) 
+       (6 variable-pitch regular 1.15)
+       (7 variable-pitch regular 1.1)
+       (8 variable-pitch regular 1.05)
+       (t variable-pitch regular 1.)
     )
   )
   (ef-themes-select 'ef-maris-dark)
