@@ -7,10 +7,11 @@
 
 
 ;; TODO Combine face settings with ef-theme
-;; TODO Org mode
 ;; TODO Meta key wierd, vertico delete one word
+;; TODO Org mode
 ;; TODO Separate init.el
 ;; TODO Elpaca add repos, fix version
+;; TODO Git graph?
 ;; TODO Key binding conflict? search all key bindings
 ;; TODO Shortcut to restart emacs
 
@@ -89,7 +90,8 @@
   ;; Enable :elpaca use-package keyword.
   (elpaca-use-package-mode)
   ;; Assume :elpaca t unless otherwise specified.
-  (setq elpaca-use-package-by-default t))
+  (setq elpaca-use-package-by-default t)
+)
 
 ;; Block until current queue processed.
 (elpaca-wait)
@@ -99,8 +101,22 @@
 (use-package ef-themes
   :init
   (setq ef-themes-to-toggle '(ef-maris-dark ef-summer))
-  (ef-themes-select 'ef-maris-dark)
+  (setq ef-themes-headings ; read the manual's entry or the doc string
+    '(
+       (0 variable-pitch light 2.0)
+       (1 variable-pitch light 1.4)
+       (2 variable-pitch regular 1.35)
+       (3 variable-pitch regular 1.3)
+       (4 variable-pitch regular 1.25)
+       (5 variable-pitch 1.2) ; absence of weight means `bold'
+       (6 variable-pitch 1.15)
+       (7 variable-pitch 1.1)
+       (8 variable-pitch 1.05)
+       (t variable-pitch 1.)
+    )
   )
+  (ef-themes-select 'ef-maris-dark)
+)
 
 ;; Set default font face
 ;; (set-face-attribute 'default nil :font "Ligamononoki Nerd Font" :height 140)
@@ -124,6 +140,7 @@
   :init (evil-collection-init)
 )
 
+
 ;; Vertical completion better than default
 (use-package vertico
   :demand t
@@ -138,10 +155,15 @@
   :init (vertico-mode)
 )
 
+
 ;; Magit, git for emacs
 (use-package magit
   :bind (("C-x g" . magit))
 )
+
+;; Org mode settings
+(add-hook 'org-mode-hook (lambda () (setq-local line-spacing 0.8)))
+
 
 ;;When installing a package which modifies a form used at the top-level
 ;;(e.g. a package which adds a use-package key word),
