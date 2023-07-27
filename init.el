@@ -8,7 +8,10 @@
 
 ;; TODO Combine face settings with ef-theme
 ;; TODO Meta key wierd, vertico delete one word
+;; TODO Create a preview org file to see how all element display 
 ;; TODO Org mode
+;; TODO Customize ef-theme faces
+;; TODO Better way to commet code
 ;; TODO Font face
 ;; TODO Ivy completion with recentf
 ;; TODO Separate init.el
@@ -31,6 +34,9 @@
 ;; Disable the tool bar
 (tool-bar-mode -1)
 
+;; Disable scroll bar
+(scroll-bar-mode -1)
+
 ;; Enable line numbering by default
 (global-display-line-numbers-mode t)
 
@@ -47,7 +53,7 @@
 (setq-default line-spacing 0.2)
 
 ;; Better line warp setting without change line within same word
-(global-visual-line-mode nil)
+(global-visual-line-mode t)
 
 ;; elpaca package management
 (defvar elpaca-installer-version 0.5)
@@ -106,16 +112,16 @@
   (setq ef-themes-headings ; read the manual's entry or the doc string
     '(
        ; absence of weight means `bold'
-       (0 variable-pitch regular 2.0)
-       (1 variable-pitch regular 1.4)
-       (2 variable-pitch regular 1.35)
-       (3 variable-pitch regular 1.3)
-       (4 variable-pitch regular 1.25)
-       (5 variable-pitch regular 1.2) 
-       (6 variable-pitch regular 1.15)
-       (7 variable-pitch regular 1.1)
-       (8 variable-pitch regular 1.05)
-       (t variable-pitch regular 1.)
+       (0 variable-pitch light 2.0)
+       (1 variable-pitch light 1.4)
+       (2 variable-pitch light 1.35)
+       (3 variable-pitch light 1.3)
+       (4 variable-pitch light 1.25)
+       (5 variable-pitch light 1.2) 
+       (6 variable-pitch light 1.15)
+       (7 variable-pitch light 1.1)
+       (8 variable-pitch light 1.05)
+       (t variable-pitch light 1.)
     )
   )
   (setq ef-themes-mixed-fonts t)
@@ -125,6 +131,9 @@
 ;; Set default font face
 ;; (set-face-attribute 'default nil :font "Ligamononoki Nerd Font" :height 140)
 (set-face-attribute 'default nil :family "Iosevka" :height 125 :width 'expanded)
+(set-face-attribute 'fixed-pitch nil :family "Iosevka" :height 125 :width 'expanded)
+(set-face-attribute 'variable-pitch nil :family "Helvetica" :weight 'light :height 160)
+;; (set-face-attribute 'variable-pitch nil :family "NewComputerModern" :weight 'light :height 160)
 
 
 ;; Vim bindings
@@ -166,7 +175,7 @@
 )
 
 ;; Org mode settings
-;; (add-hook 'org-mode-hook 'variable-pitch-mode)
+(add-hook 'org-mode-hook 'variable-pitch-mode)
 (add-hook 'org-mode-hook (lambda () (setq-local line-spacing 0.8)))
 
 
@@ -253,3 +262,5 @@
 ;;
 (require 'recentf)
 (recentf-mode 1)
+(setq recentf-max-menu-items 25)
+
