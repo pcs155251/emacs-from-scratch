@@ -10,9 +10,10 @@
 ;; TODO Meta key wierd, vertico delete one word
 ;; TODO Create a preview org file to see how all element display 
 ;; TODO Org mode
+;; TODO Check all org mode previous config
+;; TODO More modular org mode settings
 ;; TODO Customize ef-theme faces
 ;; TODO Better way to commet code
-;; TODO Font face
 ;; TODO Ivy completion with recentf
 ;; TODO Separate init.el
 ;; TODO Elpaca add repos, fix version
@@ -104,30 +105,6 @@
 ;; Block until current queue processed.
 (elpaca-wait)
 
-
-;; load ef-themes
-(use-package ef-themes
-  :init
-  (setq ef-themes-to-toggle '(ef-maris-dark ef-summer))
-  (setq ef-themes-headings ; read the manual's entry or the doc string
-    '(
-       ; absence of weight means `bold'
-       (0 variable-pitch light 2.0)
-       (1 variable-pitch light 1.4)
-       (2 variable-pitch light 1.35)
-       (3 variable-pitch light 1.3)
-       (4 variable-pitch light 1.25)
-       (5 variable-pitch light 1.2) 
-       (6 variable-pitch light 1.15)
-       (7 variable-pitch light 1.1)
-       (8 variable-pitch light 1.05)
-       (t variable-pitch light 1.)
-    )
-  )
-  (setq ef-themes-mixed-fonts t)
-  (ef-themes-select 'ef-maris-dark)
-)
-
 ;; Set default font face
 ;; (set-face-attribute 'default nil :font "Ligamononoki Nerd Font" :height 140)
 (set-face-attribute 'default nil :family "Iosevka" :height 125 :width 'expanded)
@@ -177,6 +154,46 @@
 ;; Org mode settings
 (add-hook 'org-mode-hook 'variable-pitch-mode)
 (add-hook 'org-mode-hook (lambda () (setq-local line-spacing 0.8)))
+(defun my-ef-themes-custom-faces ()
+  "My customizations on top of the Ef themes.
+This function is added to the `ef-themes-post-load-hook'."
+(ef-themes-with-colors
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(line-number ((t (:inherit (shadow fixed-pitch)))))
+ '(org-block ((t (:inherit fixed-pitch))))
+ '(org-block-begin-line ((t (:inherit fixed-pitch))))
+ '(org-document-info ((t (:foreground "dark orange"))))
+ '(org-document-info-keyword ((t (:inherit (shadow fixed-pitch)))))
+ '(org-document-title ((t (:weight normal :foreground "mac:textColor" :font "NewComputerModern" :height 2.0 :underline nil))))
+ '(org-done ((t (:inherit variable-pitch :height 1.0))))
+ '(org-drawer ((t (:inherit (shadow fixed-pitch)))))
+ '(org-headline-done ((t (:height 1.0 :strike-through t))))
+ '(org-headline-todo ((t (:height 1.0))))
+ '(org-indent ((t (:inherit (org-hide fixed-pitch)))))
+ '(org-level-1 ((t (:inherit (variable-pitch) :font "NewComputerModern" :height 1.4 :foreground "#9ac2ff"))))
+ '(org-level-2 ((t (:inherit (variable-pitch) :font "NewComputerModern" :height 1.35 :foreground "#9ac2ff"))))
+ '(org-level-3 ((t (:inherit (variable-pitch) :font "NewComputerModern" :height 1.3 :foreground "#9ac2ff"))))
+ '(org-level-4 ((t (:inherit (variable-pitch) :font "NewComputerModern" :height 1.25 :foreground "#9ac2ff"))))
+ '(org-level-5 ((t (:inherit (variable-pitch) :font "NewComputerModern" :height 1.2 :foreground "#9ac2ff"))))
+ '(org-level-6 ((t (:inherit (variable-pitch) :font "NewComputerModern" :height 1.15 :foreground "#9ac2ff"))))
+ '(org-level-7 ((t (:inherit (variable-pitch) :font "NewComputerModern" :height 1.1 :foreground "#9ac2ff"))))
+ '(org-level-8 ((t (:inherit (variable-pitch) :font "NewComputerModern" :height 1.05 :foreground "#9ac2ff"))))
+ '(org-link ((t (:foreground "royal blue" :underline t))))
+ '(org-property-value ((t (:inherit fixed-pitch))) t)
+ '(org-table ((t (:inherit fixed-pitch :foreground "#c7a07f" :height 1.1))))
+ ;; '(org-tag ((t (:inherit (shadow variable-pitch) :foreground "#66cdaa" :slant italic))))
+ ;; '(org-tag ((t (:inherit (shadow variable-pitch) :foreground "#60bf88" :slant italic))))
+ '(org-tag ((t (:family "Helvetica" :weight light :foreground "#60bf88" :slant italic :underline t))))
+ '(org-meta-line ((t (:inherit fixed-pitch :slant italic :foreground "#60bf88"))))
+ '(org-special-keyword ((t (:inherit (font-lock-comment-face fixed-pitch)))))
+ '(org-todo ((t (:inherit variable-pitch :height 1.0))))
+ '(org-code ((t (:family "Ligamononoki Nerd Font" :height 0.9 :foreground "#d37faf"))))
+ '(org-verbatim ((t (:family "Ligamononoki Nerd Font" :height 0.9 :foreground "#a698ef"))))
+ )))
 
 
 ;;When installing a package which modifies a form used at the top-level
@@ -261,6 +278,15 @@
 
 ;;
 (require 'recentf)
-(recentf-mode 1)
 (setq recentf-max-menu-items 25)
+(recentf-mode 1)
 
+
+;; load ef-themes
+(add-hook 'ef-themes-post-load-hook #'my-ef-themes-custom-faces)
+(use-package ef-themes
+  :init
+  (setq ef-themes-to-toggle '(ef-maris-dark ef-summer))
+  (setq ef-themes-mixed-fonts t)
+  (ef-themes-select 'ef-maris-dark)
+)
