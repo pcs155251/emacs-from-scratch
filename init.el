@@ -152,6 +152,38 @@
 )
 
 ;; Org mode settings
+(setq org-hide-leading-stars nil
+      org-indent-mode-turns-on-hiding-stars nil
+      org-adapt-indentation 0
+      ;;org-indent-mode-turns-off-org-adapt-indentation nil
+      org-preview-latex-default-process 'dvisvgm
+      org-indent-indentation-per-level 2
+      org-hide-emphasis-markers nil
+      org-fontify-todo-headline t
+      org-fontify-done-headline t
+      ;; org image settings
+      ;;org-display-inline-images t
+      ;;org-redisplay-inline-images t
+      ;;org-startup-with-inline-images "inlineimages"
+      ;; org mode latex preview when start up
+      ;;org-startup-with-latex-preview 't
+      ;; org-format-latex-options (plist-put org-format-latex-options :scale 1.1 )
+      ;; org-format-latex-options (plist-put org-format-latex-options :background "Transparent")
+      org-startup-folded 'showall
+      org-startup-indented t
+      org-todo-keywords
+      '((sequence "TODO(t)" "NOW(n)" "WAITING(w)" "SOMEDAY(s)" "CANCELED(c)" "|" "DONE(d)" ))
+      org-todo-keyword-faces '(
+               ("NOW"       . (:inherit variable-pitch :foreground "#d4a052" ))
+               ("WAITING"   . (:inherit variable-pitch :foreground "#d4a052" ))
+               ("SOMEDAY"   . (:inherit variable-pitch :foreground "#d4a052" ))
+               ("CANCELED"  . (:inherit variable-pitch :foreground "#d4a052" ))
+      )
+      system-time-locale "en_US.UTF-8"
+)
+
+
+
 (add-hook 'org-mode-hook 'variable-pitch-mode)
 (add-hook 'org-mode-hook (lambda () (setq-local line-spacing 0.8)))
 (defun my-ef-themes-custom-faces ()
@@ -174,6 +206,7 @@ This function is added to the `ef-themes-post-load-hook'."
  '(org-headline-done ((t (:height 1.0 :strike-through t))))
  '(org-headline-todo ((t (:height 1.0))))
  '(org-indent ((t (:inherit (org-hide fixed-pitch)))))
+ '(org-document-title ((t (:inherit (variable-pitch) :font "NewComputerModern" :height 2.0 :foreground "#9ac2ff"))))
  '(org-level-1 ((t (:inherit (variable-pitch) :font "NewComputerModern" :height 1.4 :foreground "#9ac2ff"))))
  '(org-level-2 ((t (:inherit (variable-pitch) :font "NewComputerModern" :height 1.35 :foreground "#9ac2ff"))))
  '(org-level-3 ((t (:inherit (variable-pitch) :font "NewComputerModern" :height 1.3 :foreground "#9ac2ff"))))
@@ -184,16 +217,17 @@ This function is added to the `ef-themes-post-load-hook'."
  '(org-level-8 ((t (:inherit (variable-pitch) :font "NewComputerModern" :height 1.05 :foreground "#9ac2ff"))))
  '(org-link ((t (:foreground "royal blue" :underline t))))
  '(org-property-value ((t (:inherit fixed-pitch))) t)
- '(org-table ((t (:inherit fixed-pitch :foreground "#c7a07f" :height 1.1))))
+ ;'(org-table ((t (:inherit fixed-pitch :foreground "#c7a07f" :height 1.1))))
  ;; '(org-tag ((t (:inherit (shadow variable-pitch) :foreground "#66cdaa" :slant italic))))
  ;; '(org-tag ((t (:inherit (shadow variable-pitch) :foreground "#60bf88" :slant italic))))
  '(org-tag ((t (:family "Helvetica" :weight light :foreground "#60bf88" :slant italic :underline t))))
  '(org-meta-line ((t (:inherit fixed-pitch :slant italic :foreground "#60bf88"))))
  '(org-special-keyword ((t (:inherit (font-lock-comment-face fixed-pitch)))))
  '(org-todo ((t (:inherit variable-pitch :height 1.0))))
- '(org-code ((t (:family "Ligamononoki Nerd Font" :height 0.9 :foreground "#d37faf"))))
- '(org-verbatim ((t (:family "Ligamononoki Nerd Font" :height 0.9 :foreground "#a698ef"))))
- )))
+ ;'(org-code ((t (:family "Ligamononoki Nerd Font" :height 0.9 :foreground "#d37faf"))))
+ ;'(org-verbatim ((t (:family "Ligamononoki Nerd Font" :height 0.9 :foreground "#a698ef"))))
+ )
+))
 
 
 ;;When installing a package which modifies a form used at the top-level
