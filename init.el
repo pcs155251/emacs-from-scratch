@@ -107,8 +107,10 @@
 
 ;; Set default font face
 ;; (set-face-attribute 'default nil :font "Ligamononoki Nerd Font" :height 140)
-(set-face-attribute 'default nil :family "Iosevka" :height 125 :width 'expanded)
-(set-face-attribute 'fixed-pitch nil :family "Iosevka" :height 125 :width 'expanded)
+(set-face-attribute 'default nil :family "JetBrains Mono" :height 120)
+; (set-face-attribute 'default nil :family "Iosevka" :height 125 :width 'expanded)
+(set-face-attribute 'fixed-pitch nil :family "JetBrains Mono" :height 120)
+; (set-face-attribute 'fixed-pitch nil :family "Iosevka" :height 125 :width 'expanded)
 (set-face-attribute 'variable-pitch nil :family "Helvetica" :weight 'light :height 160)
 ;; (set-face-attribute 'variable-pitch nil :family "NewComputerModern" :weight 'light :height 160)
 
@@ -182,7 +184,7 @@
       system-time-locale "en_US.UTF-8"
 )
 
-
+(defvar my-color "#d4a052")
 
 (add-hook 'org-mode-hook 'variable-pitch-mode)
 (add-hook 'org-mode-hook (lambda () (setq-local line-spacing 0.8)))
@@ -198,9 +200,10 @@ This function is added to the `ef-themes-post-load-hook'."
  '(line-number ((t (:inherit (shadow fixed-pitch)))))
  '(org-block ((t (:inherit fixed-pitch))))
  '(org-block-begin-line ((t (:inherit fixed-pitch))))
- '(org-document-info ((t (:foreground "dark orange"))))
+ ;'(org-document-info ((t (:foreground "dark orange"))))
  '(org-document-info-keyword ((t (:inherit (shadow fixed-pitch)))))
  '(org-document-title ((t (:weight normal :foreground "mac:textColor" :font "NewComputerModern" :height 2.0 :underline nil))))
+ '(org-todo ((t (:inherit variable-pitch :height 1.0))))
  '(org-done ((t (:inherit variable-pitch :height 1.0))))
  '(org-drawer ((t (:inherit (shadow fixed-pitch)))))
  '(org-headline-done ((t (:height 1.0 :strike-through t))))
@@ -217,13 +220,10 @@ This function is added to the `ef-themes-post-load-hook'."
  '(org-level-8 ((t (:inherit (variable-pitch) :font "NewComputerModern" :height 1.05 :foreground "#9ac2ff"))))
  '(org-link ((t (:foreground "royal blue" :underline t))))
  '(org-property-value ((t (:inherit fixed-pitch))) t)
- ;'(org-table ((t (:inherit fixed-pitch :foreground "#c7a07f" :height 1.1))))
- ;; '(org-tag ((t (:inherit (shadow variable-pitch) :foreground "#66cdaa" :slant italic))))
- ;; '(org-tag ((t (:inherit (shadow variable-pitch) :foreground "#60bf88" :slant italic))))
- '(org-tag ((t (:family "Helvetica" :weight light :foreground "#60bf88" :slant italic :underline t))))
- '(org-meta-line ((t (:inherit fixed-pitch :slant italic :foreground "#60bf88"))))
+ '(org-table ((t (:inherit fixed-pitch :foreground "#eaedef"))))
+ ;'(org-tag ((t (:family "Helvetica" :weight light :foreground "#60bf88" :slant italic :underline t))))
+ '(org-meta-line ((t (:inherit fixed-pitch :slant italic))))
  '(org-special-keyword ((t (:inherit (font-lock-comment-face fixed-pitch)))))
- '(org-todo ((t (:inherit variable-pitch :height 1.0))))
  ;'(org-code ((t (:family "Ligamononoki Nerd Font" :height 0.9 :foreground "#d37faf"))))
  ;'(org-verbatim ((t (:family "Ligamononoki Nerd Font" :height 0.9 :foreground "#a698ef"))))
  )
