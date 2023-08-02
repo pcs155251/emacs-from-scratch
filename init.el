@@ -109,8 +109,12 @@
 
 ;; Set default font face
 ;; (set-face-attribute 'default nil :font "Ligamononoki Nerd Font" :height 140)
-(set-face-attribute 'default nil :family "Iosevka" :height 125 :width 'expanded)
-(set-face-attribute 'fixed-pitch nil :family "Iosevka" :height 125 :width 'expanded)
+;; (set-face-attribute 'default nil :family "JetBrains Mono" :height 100)
+(set-face-attribute 'default nil :family "Iosevka" :height 120 :width 'expanded :weight 'semi-light)
+
+; (set-face-attribute 'fixed-pitch nil :family "JetBrains Mono" :height 100)
+(set-face-attribute 'fixed-pitch nil :family "Iosevka" :height 120 :width 'expanded :weight 'semi-light)
+
 (set-face-attribute 'variable-pitch nil :family "Helvetica" :weight 'light :height 160)
 ;; (set-face-attribute 'variable-pitch nil :family "NewComputerModern" :weight 'light :height 160)
 
@@ -154,10 +158,38 @@
 )
 
 ;; Org mode settings
-(defvar org-heading-foreground (face-foreground 'font-lock-keyword-face))
-(defface org-heading-face
-  `((t (:inherit variable-pitch :family "NewComputerModern" :font "NewComputerModern" :foreground ,org-heading-foreground)))
-  "My custom face that inherits from org-level-1 and uses the foreground color of org-level-2.")
+(setq org-hide-leading-stars nil
+      org-indent-mode-turns-on-hiding-stars nil
+      org-adapt-indentation 0
+      ;;org-indent-mode-turns-off-org-adapt-indentation nil
+      org-preview-latex-default-process 'dvisvgm
+      org-indent-indentation-per-level 2
+      org-hide-emphasis-markers nil
+      org-fontify-todo-headline t
+      org-fontify-done-headline t
+      ;; org image settings
+      ;;org-display-inline-images t
+      ;;org-redisplay-inline-images t
+      ;;org-startup-with-inline-images "inlineimages"
+      ;; org mode latex preview when start up
+      ;;org-startup-with-latex-preview 't
+      ;; org-format-latex-options (plist-put org-format-latex-options :scale 1.1 )
+      ;; org-format-latex-options (plist-put org-format-latex-options :background "Transparent")
+      org-startup-folded 'showall
+      org-startup-indented t
+      org-todo-keywords
+      '((sequence "TODO(t)" "NOW(n)" "WAITING(w)" "SOMEDAY(s)" "CANCELED(c)" "|" "DONE(d)" ))
+      org-todo-keyword-faces '(
+               ("NOW"       . (:inherit variable-pitch :foreground "#d4a052" ))
+               ("WAITING"   . (:inherit variable-pitch :foreground "#d4a052" ))
+               ("SOMEDAY"   . (:inherit variable-pitch :foreground "#d4a052" ))
+               ("CANCELED"  . (:inherit variable-pitch :foreground "#d4a052" ))
+      )
+      system-time-locale "en_US.UTF-8"
+)
+
+(defvar my-color "#d4a052")
+
 (add-hook 'org-mode-hook 'variable-pitch-mode)
 (add-hook 'org-mode-hook (lambda () (setq-local line-spacing 0.8)))
 (defun my-ef-themes-custom-faces ()
@@ -176,37 +208,31 @@ This function is added to the `ef-themes-post-load-hook'."
  '(line-number ((t (:inherit (shadow fixed-pitch)))))
  '(org-block ((t (:inherit fixed-pitch))))
  '(org-block-begin-line ((t (:inherit fixed-pitch))))
- '(org-document-info ((t (:foreground "dark orange"))))
+ '(org-document-info ((t (:inherit variable-pitch :foreground "#eaedef"))))
  '(org-document-info-keyword ((t (:inherit (shadow fixed-pitch)))))
- '(org-document-title ((t (:inherit (default) :font "Helvetica" :height 2.0 :underline nil))))
+ '(org-todo ((t (:inherit variable-pitch :height 1.0))))
  '(org-done ((t (:inherit variable-pitch :height 1.0))))
  '(org-drawer ((t (:inherit (shadow fixed-pitch)))))
- '(org-headline-done ((t (:height 1.0 :strike-through t))))
- '(org-headline-todo ((t (:height 1.0))))
+ '(org-headline-done ((t (:height 1.0 :foreground "#eaedef" :strike-through t))))
+ '(org-headline-todo ((t (:height 1.0 :foreground "#eaedef"))))
  '(org-indent ((t (:inherit (org-hide fixed-pitch)))))
-; '(org-level-1 ((t (:inherit (variable-pitch) :font "NewComputerModern" :height 1.4 :foreground "#9ac2ff"))))
-; '(org-level-1 ((t (:inherit (variable-pitch) ))))
- '(org-level-1 ((t (:inherit (org-heading-face) :hight 2.0))))
- '(org-level-2 ((t (:inherit (variable-pitch) :font "NewComputerModern" :height 1.35 :foreground "#9ac2ff"))))
- '(org-level-3 ((t (:inherit (variable-pitch) :font "NewComputerModern" :height 1.3 :foreground "#9ac2ff"))))
- '(org-level-4 ((t (:inherit (variable-pitch) :font "NewComputerModern" :height 1.25 :foreground "#9ac2ff"))))
- '(org-level-5 ((t (:inherit (variable-pitch) :font "NewComputerModern" :height 1.2 :foreground "#9ac2ff"))))
- '(org-level-6 ((t (:inherit (variable-pitch) :font "NewComputerModern" :height 1.15 :foreground "#9ac2ff"))))
- '(org-level-7 ((t (:inherit (variable-pitch) :font "NewComputerModern" :height 1.1 :foreground "#9ac2ff"))))
- '(org-level-8 ((t (:inherit (variable-pitch) :font "NewComputerModern" :height 1.05 :foreground "#9ac2ff"))))
- '(org-link ((t (:foreground "royal blue" :underline t))))
+ '(org-document-title ((t (:inherit (variable-pitch) :font "NewComputerModern" :height 2.0  :foreground "#eaedef"))))
+ '(org-level-1        ((t (:inherit (variable-pitch) :font "NewComputerModern" :height 1.4  :foreground "#eaedef"))))
+ '(org-level-2        ((t (:inherit (variable-pitch) :font "NewComputerModern" :height 1.35 :foreground "#eaedef"))))
+ '(org-level-3        ((t (:inherit (variable-pitch) :font "NewComputerModern" :height 1.3  :foreground "#eaedef"))))
+ '(org-level-4        ((t (:inherit (variable-pitch) :font "NewComputerModern" :height 1.25 :foreground "#eaedef"))))
+ '(org-level-5        ((t (:inherit (variable-pitch) :font "NewComputerModern" :height 1.2  :foreground "#eaedef"))))
+ '(org-level-6        ((t (:inherit (variable-pitch) :font "NewComputerModern" :height 1.15 :foreground "#eaedef"))))
+ '(org-level-7        ((t (:inherit (variable-pitch) :font "NewComputerModern" :height 1.1  :foreground "#eaedef"))))
+ '(org-level-8        ((t (:inherit (variable-pitch) :font "NewComputerModern" :height 1.05 :foreground "#eaedef"))))
+ '(org-tag ((t (:inherit variable-pitch))))
  '(org-property-value ((t (:inherit fixed-pitch))) t)
- '(org-table ((t (:inherit fixed-pitch :foreground "#c7a07f" :height 1.1))))
-
- ;; '(org-tag ((t (:inherit (shadow variable-pitch) :foreground "#66cdaa" :slant italic))))
- ;; '(org-tag ((t (:inherit (shadow variable-pitch) :foreground "#60bf88" :slant italic))))
- '(org-tag ((t (:family "Helvetica" :weight light :foreground "#60bf88" :slant italic :underline t))))
- '(org-meta-line ((t (:inherit fixed-pitch :slant italic :foreground "#60bf88"))))
+ '(org-table ((t (:inherit fixed-pitch :foreground "#eaedef"))))
  '(org-special-keyword ((t (:inherit (font-lock-comment-face fixed-pitch)))))
- '(org-todo ((t (:inherit variable-pitch :height 1.0))))
- '(org-code ((t (:family "Ligamononoki Nerd Font" :height 0.9 :foreground "#d37faf"))))
- '(org-verbatim ((t (:family "Ligamononoki Nerd Font" :height 0.9 :foreground "#a698ef"))))
- )))
+ '(org-code ((t (:inherit fixed-pitch :height 1.2 ))))
+ '(org-verbatim ((t (:inherit fixed-pitch :height 1.2 ))))
+ )
+))
 
 (setq org-hide-leading-stars nil
       org-indent-mode-turns-on-hiding-stars nil
@@ -300,11 +326,7 @@ This function is added to the `ef-themes-post-load-hook'."
 ;; compat
 ;; elpaca-use-package
 ;; evil 
-;; evil
 ;; goto-chg 
-;; goto-chg 
-;; use-package 
-;; use-package 
 ;; use-package 
 ;; vertico 
 
