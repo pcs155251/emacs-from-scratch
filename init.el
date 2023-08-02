@@ -6,24 +6,6 @@
 ;; what variables specify), the help system can provide.
 
 
-;; TODO Better command line operation (meta key?)
-;; TODO Meta key wierd, vertico delete one word
-;; TODO Create a preview org file to see how all element display in emacs and logseq
-;; TODO Org mode
-;; TODO Org mode and anki integration
-;; TODO Check all org mode previous config
-;; TODO More modular org mode settings
-;; TODO Customize ef-theme faces
-;; TODO Integrate with chatGPT
-;; TODO Better way to commet code
-;; TODO Ivy completion with recentf
-;; TODO Separate init.el
-;; TODO Elpaca add repos, fix version
-;; TODO Git graph?
-;; TODO Key binding conflict? search all key bindings
-;; TODO Shortcut to restart emacs
-
-
 (setq user-full-name "Julian Lee"
       user-mail-address "pcs155251@gmail.com")
 
@@ -157,7 +139,10 @@
   :bind (("C-x g" . magit))
 )
 
-;; Org mode settings
+; Org mode settings
+;; auto indent
+(electric-indent-mode 0)
+(setq evil-auto-indent nil)
 (setq org-hide-leading-stars nil
       org-indent-mode-turns-on-hiding-stars nil
       org-adapt-indentation 0
