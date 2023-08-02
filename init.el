@@ -108,10 +108,10 @@
 ;; Set default font face
 ;; (set-face-attribute 'default nil :font "Ligamononoki Nerd Font" :height 140)
 ;; (set-face-attribute 'default nil :family "JetBrains Mono" :height 100)
-(set-face-attribute 'default nil :family "Iosevka" :height 100 :width 'expanded :weight 'semi-light)
+(set-face-attribute 'default nil :family "Iosevka" :height 120 :width 'expanded :weight 'semi-light)
 
 ; (set-face-attribute 'fixed-pitch nil :family "JetBrains Mono" :height 100)
-(set-face-attribute 'fixed-pitch nil :family "Iosevka" :height 100 :width 'expanded :weight 'semi-light)
+(set-face-attribute 'fixed-pitch nil :family "Iosevka" :height 120 :width 'expanded :weight 'semi-light)
 
 (set-face-attribute 'variable-pitch nil :family "Helvetica" :weight 'light :height 160)
 ;; (set-face-attribute 'variable-pitch nil :family "NewComputerModern" :weight 'light :height 160)
@@ -202,32 +202,29 @@ This function is added to the `ef-themes-post-load-hook'."
  '(line-number ((t (:inherit (shadow fixed-pitch)))))
  '(org-block ((t (:inherit fixed-pitch))))
  '(org-block-begin-line ((t (:inherit fixed-pitch))))
- ;'(org-document-info ((t (:foreground "dark orange"))))
+ '(org-document-info ((t (:inherit variable-pitch :foreground "#eaedef"))))
  '(org-document-info-keyword ((t (:inherit (shadow fixed-pitch)))))
- '(org-document-title ((t (:weight normal :foreground "mac:textColor" :font "NewComputerModern" :height 2.0 :underline nil))))
  '(org-todo ((t (:inherit variable-pitch :height 1.0))))
  '(org-done ((t (:inherit variable-pitch :height 1.0))))
  '(org-drawer ((t (:inherit (shadow fixed-pitch)))))
- '(org-headline-done ((t (:height 1.0 :strike-through t))))
- '(org-headline-todo ((t (:height 1.0))))
+ '(org-headline-done ((t (:height 1.0 :foreground "#eaedef" :strike-through t))))
+ '(org-headline-todo ((t (:height 1.0 :foreground "#eaedef"))))
  '(org-indent ((t (:inherit (org-hide fixed-pitch)))))
- '(org-document-title ((t (:inherit (variable-pitch) :font "NewComputerModern" :height 2.0 :foreground "#9ac2ff"))))
- '(org-level-1 ((t (:inherit (variable-pitch) :font "NewComputerModern" :height 1.4 :foreground "#9ac2ff"))))
- '(org-level-2 ((t (:inherit (variable-pitch) :font "NewComputerModern" :height 1.35 :foreground "#9ac2ff"))))
- '(org-level-3 ((t (:inherit (variable-pitch) :font "NewComputerModern" :height 1.3 :foreground "#9ac2ff"))))
- '(org-level-4 ((t (:inherit (variable-pitch) :font "NewComputerModern" :height 1.25 :foreground "#9ac2ff"))))
- '(org-level-5 ((t (:inherit (variable-pitch) :font "NewComputerModern" :height 1.2 :foreground "#9ac2ff"))))
- '(org-level-6 ((t (:inherit (variable-pitch) :font "NewComputerModern" :height 1.15 :foreground "#9ac2ff"))))
- '(org-level-7 ((t (:inherit (variable-pitch) :font "NewComputerModern" :height 1.1 :foreground "#9ac2ff"))))
- '(org-level-8 ((t (:inherit (variable-pitch) :font "NewComputerModern" :height 1.05 :foreground "#9ac2ff"))))
- '(org-link ((t (:foreground "royal blue" :underline t))))
+ '(org-document-title ((t (:inherit (variable-pitch) :font "NewComputerModern" :height 2.0  :foreground "#eaedef"))))
+ '(org-level-1        ((t (:inherit (variable-pitch) :font "NewComputerModern" :height 1.4  :foreground "#eaedef"))))
+ '(org-level-2        ((t (:inherit (variable-pitch) :font "NewComputerModern" :height 1.35 :foreground "#eaedef"))))
+ '(org-level-3        ((t (:inherit (variable-pitch) :font "NewComputerModern" :height 1.3  :foreground "#eaedef"))))
+ '(org-level-4        ((t (:inherit (variable-pitch) :font "NewComputerModern" :height 1.25 :foreground "#eaedef"))))
+ '(org-level-5        ((t (:inherit (variable-pitch) :font "NewComputerModern" :height 1.2  :foreground "#eaedef"))))
+ '(org-level-6        ((t (:inherit (variable-pitch) :font "NewComputerModern" :height 1.15 :foreground "#eaedef"))))
+ '(org-level-7        ((t (:inherit (variable-pitch) :font "NewComputerModern" :height 1.1  :foreground "#eaedef"))))
+ '(org-level-8        ((t (:inherit (variable-pitch) :font "NewComputerModern" :height 1.05 :foreground "#eaedef"))))
+ '(org-tag ((t (:inherit variable-pitch))))
  '(org-property-value ((t (:inherit fixed-pitch))) t)
  '(org-table ((t (:inherit fixed-pitch :foreground "#eaedef"))))
- ;'(org-tag ((t (:family "Helvetica" :weight light :foreground "#60bf88" :slant italic :underline t))))
- '(org-meta-line ((t (:inherit fixed-pitch :slant italic))))
  '(org-special-keyword ((t (:inherit (font-lock-comment-face fixed-pitch)))))
- ;'(org-code ((t (:family "Ligamononoki Nerd Font" :height 0.9 :foreground "#d37faf"))))
- ;'(org-verbatim ((t (:family "Ligamononoki Nerd Font" :height 0.9 :foreground "#a698ef"))))
+ '(org-code ((t (:inherit fixed-pitch :height 1.2 ))))
+ '(org-verbatim ((t (:inherit fixed-pitch :height 1.2 ))))
  )
 ))
 
@@ -290,11 +287,7 @@ This function is added to the `ef-themes-post-load-hook'."
 ;; compat
 ;; elpaca-use-package
 ;; evil 
-;; evil
 ;; goto-chg 
-;; goto-chg 
-;; use-package 
-;; use-package 
 ;; use-package 
 ;; vertico 
 
