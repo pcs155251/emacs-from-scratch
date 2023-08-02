@@ -107,10 +107,12 @@
 
 ;; Set default font face
 ;; (set-face-attribute 'default nil :font "Ligamononoki Nerd Font" :height 140)
-(set-face-attribute 'default nil :family "JetBrains Mono" :height 120)
-; (set-face-attribute 'default nil :family "Iosevka" :height 125 :width 'expanded)
-(set-face-attribute 'fixed-pitch nil :family "JetBrains Mono" :height 120)
-; (set-face-attribute 'fixed-pitch nil :family "Iosevka" :height 125 :width 'expanded)
+;; (set-face-attribute 'default nil :family "JetBrains Mono" :height 100)
+(set-face-attribute 'default nil :family "Iosevka" :height 100 :width 'expanded :weight 'semi-light)
+
+; (set-face-attribute 'fixed-pitch nil :family "JetBrains Mono" :height 100)
+(set-face-attribute 'fixed-pitch nil :family "Iosevka" :height 100 :width 'expanded :weight 'semi-light)
+
 (set-face-attribute 'variable-pitch nil :family "Helvetica" :weight 'light :height 160)
 ;; (set-face-attribute 'variable-pitch nil :family "NewComputerModern" :weight 'light :height 160)
 
