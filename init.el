@@ -119,20 +119,31 @@
 )
 
 
-;; Vertical completion better than default
+; Vertical completion better than default
 (use-package vertico
   :demand t
   :bind (:map vertico-map
            ("C-j" . vertico-next)
            ("C-k" . vertico-previous)
-           ("C-f" . vertico-exit)
            :map minibuffer-local-map
-           ;;("M-h" . backward-kill-word)
         )
   :custom (vertico-cycle t) ;; Enable cycling for `vertico-next' and `vertico-previous'.
   :init (vertico-mode)
 )
 
+; consult
+(use-package consult
+  :ensure t
+  ;:bind (("C-x b" . consult-buffer)  ;; example keybinding
+  ;       ("C-x M-:" . consult-apropos))  ;; another example keybinding
+  :config
+  ;; Optionally configure preview. Note that the default value
+  ;; of `consult-preview-key` is 'any, which means that as long
+  ;; as any key is pressed, the preview is shown.
+  ;; If you prefer to disable previews, set the variable to nil.
+  ;(setq consult-vertico-cycle t)
+  (setq consult-preview-key 'any)
+)
 
 ;; Magit, git for emacs
 (use-package magit
