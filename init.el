@@ -244,6 +244,28 @@ This function is added to the `ef-themes-post-load-hook'."
   (org-roam-db-autosync-mode)
 )
 
+(use-package org-download
+  :ensure t
+  :config
+  ;; Drag-and-drop to `dired`
+  (add-hook 'dired-mode-hook 'org-download-enable)
+
+  ;; This changes the directory where images are stored.
+  (setq org-image-actual-width nil)
+  (setq org-download-image-org-width 100)
+  (setq-default org-download-image-dir "~/personal_projects/note")
+)
+
+;(with-eval-after-load 'org-download
+;  (setq org-download-method 'directory)
+;  (setq org-download-image-dir (concat (file-name-sans-extension (buffer-file-name)) "-img"))
+;  (setq org-download-image-org-width 600)
+;  (setq org-download-link-format "[[file:%s]]\n"
+;     org-download-abbreviate-filename-function #'file-relative-name)
+;  (setq org-download-link-format-function #'org-download-link-format-function-default)
+;)
+
+
 
 ;;When installing a package which modifies a form used at the top-level
 ;;(e.g. a package which adds a use-package key word),
