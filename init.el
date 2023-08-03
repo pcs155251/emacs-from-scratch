@@ -150,42 +150,8 @@
   :bind (("C-x g" . magit))
 )
 
+
 ; Org mode settings
-;; auto indent
-(electric-indent-mode 0)
-(setq evil-auto-indent nil)
-(setq org-hide-leading-stars nil
-      org-indent-mode-turns-on-hiding-stars nil
-      org-adapt-indentation 0
-      ;;org-indent-mode-turns-off-org-adapt-indentation nil
-      org-preview-latex-default-process 'dvisvgm
-      org-indent-indentation-per-level 2
-      org-hide-emphasis-markers nil
-      org-fontify-todo-headline t
-      org-fontify-done-headline t
-      ;; org image settings
-      ;;org-display-inline-images t
-      ;;org-redisplay-inline-images t
-      ;;org-startup-with-inline-images "inlineimages"
-      ;; org mode latex preview when start up
-      ;;org-startup-with-latex-preview 't
-      ;; org-format-latex-options (plist-put org-format-latex-options :scale 1.1 )
-      ;; org-format-latex-options (plist-put org-format-latex-options :background "Transparent")
-      org-startup-folded 'showall
-      org-startup-indented t
-      org-todo-keywords
-      '((sequence "TODO(t)" "NOW(n)" "WAITING(w)" "SOMEDAY(s)" "CANCELED(c)" "|" "DONE(d)" ))
-      org-todo-keyword-faces '(
-               ("NOW"       . (:inherit variable-pitch :foreground "#d4a052" ))
-               ("WAITING"   . (:inherit variable-pitch :foreground "#d4a052" ))
-               ("SOMEDAY"   . (:inherit variable-pitch :foreground "#d4a052" ))
-               ("CANCELED"  . (:inherit variable-pitch :foreground "#d4a052" ))
-      )
-      system-time-locale "en_US.UTF-8"
-)
-
-(defvar my-color "#d4a052")
-
 (add-hook 'org-mode-hook 'variable-pitch-mode)
 (add-hook 'org-mode-hook (lambda () (setq-local line-spacing 0.8)))
 (defun my-ef-themes-custom-faces ()
@@ -233,31 +199,27 @@ This function is added to the `ef-themes-post-load-hook'."
 (setq org-hide-leading-stars nil
       org-indent-mode-turns-on-hiding-stars nil
       org-adapt-indentation 0
-      ;;org-indent-mode-turns-off-org-adapt-indentation nil
+      ; org-indent-mode-turns-off-org-adapt-indentation nil ; not sure what is this
       org-indent-indentation-per-level 0
       org-hide-emphasis-markers nil
       org-fontify-todo-headline t
       org-fontify-done-headline t
-      ;; org image settings
+      ; org image settings
       org-display-inline-images t
       org-redisplay-inline-images t
       org-startup-with-inline-images "inlineimages"
-      ;; org mode latex preview when start up
-      ;;; org latex repiew settings
+      ; org latex repiew settings
       org-preview-latex-default-process 'dvisvgm
       org-startup-with-latex-preview 't
-      ;org-format-latex-options (plist-put org-format-latex-options :background "Transparent")
-      ;;
-      ;; this is code is this
       org-startup-folded 'showall
       org-startup-indented t
       org-todo-keywords
-      '((sequence "TODO(t)" "DOING(n)" "WAITING(w)"  "SOMEDAY(s)" "|" "CANCELED(c)" "DONE(d)" ))
+      '((sequence "TODO(t)" "NOW(n)" "WAITING(w)" "SOMEDAY(s)" "CANCELED(c)" "|" "DONE(d)" ))
       org-todo-keyword-faces '(
-               ("DOING"    . (:inherit variable-pitch :foreground "#d4a052" ))
-               ("WAITING"  . (:inherit variable-pitch :foreground "#d4a052" ))
-               ("SOMEDAY"  . (:inherit variable-pitch :foreground "#d4a052" ))
-               ("CANCELED" . (:inherit org-done))
+               ("NOW"       . (:inherit variable-pitch :foreground "#d4a052" ))
+               ("WAITING"   . (:inherit variable-pitch :foreground "#d4a052" ))
+               ("SOMEDAY"   . (:inherit variable-pitch :foreground "#d4a052" ))
+               ("CANCELED"  . (:inherit variable-pitch :foreground "#d4a052" ))
       )
       system-time-locale "en_US.UTF-8"
 )
