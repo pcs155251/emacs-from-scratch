@@ -234,20 +234,19 @@ This function is added to the `ef-themes-post-load-hook'."
       org-indent-mode-turns-on-hiding-stars nil
       org-adapt-indentation 0
       ;;org-indent-mode-turns-off-org-adapt-indentation nil
-      org-indent-indentation-per-level 2
+      org-indent-indentation-per-level 0
       org-hide-emphasis-markers nil
       org-fontify-todo-headline t
       org-fontify-done-headline t
       ;; org image settings
-      ;;org-display-inline-images t
-      ;;org-redisplay-inline-images t
-      ;;org-startup-with-inline-images "inlineimages"
+      org-display-inline-images t
+      org-redisplay-inline-images t
+      org-startup-with-inline-images "inlineimages"
       ;; org mode latex preview when start up
       ;;; org latex repiew settings
-      ;; org-preview-latex-default-process 'dvisvgm
-      ;;org-startup-with-latex-preview 't
-      ;; org-format-latex-options (plist-put org-format-latex-options :scale 1.1 )
-      ;; org-format-latex-options (plist-put org-format-latex-options :background "Transparent")
+      org-preview-latex-default-process 'dvisvgm
+      org-startup-with-latex-preview 't
+      ;org-format-latex-options (plist-put org-format-latex-options :background "Transparent")
       ;;
       ;; this is code is this
       org-startup-folded 'showall
@@ -261,6 +260,11 @@ This function is added to the `ef-themes-post-load-hook'."
                ("CANCELED" . (:inherit org-done))
       )
       system-time-locale "en_US.UTF-8"
+)
+
+(with-eval-after-load 'org
+  (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.2))
+  (global-set-key (kbd "C-x q") 'org-latex-preview)
 )
 
 
