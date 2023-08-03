@@ -231,6 +231,19 @@ This function is added to the `ef-themes-post-load-hook'."
   (global-set-key (kbd "C-x q") 'org-latex-preview)
 )
 
+; org-roam,
+(use-package org-roam
+  :ensure t
+  :custom
+  (org-roam-directory "~/personal_projects/note")
+  ;:bind (("C-c n l" . org-roam)
+  ;       ("C-c n f" . org-roam-find-file)
+  ;       ("C-c n g" . org-roam-graph))
+  :hook
+  (after-init . org-roam-mode)
+)
+(org-roam-db-autosync-mode)
+
 
 ;;When installing a package which modifies a form used at the top-level
 ;;(e.g. a package which adds a use-package key word),
@@ -310,8 +323,8 @@ This function is added to the `ef-themes-post-load-hook'."
 
 ;;
 (require 'recentf)
-(setq recentf-max-menu-items 25)
 (recentf-mode 1)
+(setq recentf-max-menu-items 30)
 
 
 ;; load ef-themes
@@ -322,3 +335,4 @@ This function is added to the `ef-themes-post-load-hook'."
   (setq ef-themes-mixed-fonts t)
   (ef-themes-select 'ef-maris-dark)
 )
+(put 'downcase-region 'disabled nil)
