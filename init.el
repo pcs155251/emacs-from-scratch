@@ -241,8 +241,8 @@ This function is added to the `ef-themes-post-load-hook'."
   ;       ("C-c n g" . org-roam-graph))
   :hook
   (after-init . org-roam-mode)
+  (org-roam-db-autosync-mode)
 )
-(org-roam-db-autosync-mode)
 
 
 ;;When installing a package which modifies a form used at the top-level
@@ -323,8 +323,9 @@ This function is added to the `ef-themes-post-load-hook'."
 
 ;;
 (require 'recentf)
-(recentf-mode 1)
+(setq recentf-max-save-items 30)
 (setq recentf-max-menu-items 30)
+(recentf-mode 1)
 
 
 ;; load ef-themes
