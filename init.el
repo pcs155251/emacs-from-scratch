@@ -27,6 +27,7 @@
 
 ;; Automatically pair parentheses
 (electric-pair-mode t)
+(electric-indent-mode -1)
 
 ;; Store automatic customisation options elsewhere
 (setq custom-file (locate-user-emacs-file "custom.el"))
@@ -112,6 +113,7 @@
   ;; (setq evil-undo-system 'undo-fu)
   :config
   (evil-mode 1)
+  (setq evil-auto-indent nil)
 )
 (use-package evil-collection
   :after evil
