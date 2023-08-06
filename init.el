@@ -190,6 +190,7 @@ This function is added to the `ef-themes-post-load-hook'."
  '(org-level-7        ((t (:inherit (variable-pitch) :font "NewComputerModern" :height 1.1  :foreground "#eaedef"))))
  '(org-level-8        ((t (:inherit (variable-pitch) :font "NewComputerModern" :height 1.05 :foreground "#eaedef"))))
  '(org-tag ((t (:inherit variable-pitch))))
+ ;'(org-link ((t (:foreground "#70a0ff"))))
  '(org-property-value ((t (:inherit fixed-pitch))) t)
  '(org-table ((t (:inherit fixed-pitch :foreground "#eaedef"))))
  '(org-special-keyword ((t (:inherit (font-lock-comment-face fixed-pitch)))))
@@ -240,6 +241,14 @@ This function is added to the `ef-themes-post-load-hook'."
   :custom
   (org-roam-directory "~/personal_projects/note")
   (org-roam-completion-everywhere t)
+  (org-roam-capture-templates
+   '(("d" "default" plain
+      "* %?"
+      :target (file+head "${title}.org" "#+title: ${title}")
+      :unnarrowed t
+      :empty-lines 1
+      ))
+   )
   ;:bind (("C-c n l" . org-roam)
   ;       ("C-c n f" . org-roam-find-file)
   ;       ("C-c n g" . org-roam-graph))
@@ -261,7 +270,6 @@ This function is added to the `ef-themes-post-load-hook'."
   )
 )
 (global-set-key (kbd "C-c i") 'org-roam-node-insert-immediate)
-
 
 (use-package org-download
   :ensure t
