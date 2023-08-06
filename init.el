@@ -234,15 +234,34 @@ This function is added to the `ef-themes-post-load-hook'."
 ; org-roam,
 (use-package org-roam
   :ensure t
+  :demand t
+  :init
+  (setq org-roam-v2-ack t)
   :custom
   (org-roam-directory "~/personal_projects/note")
+  (org-roam-completion-everywhere t)
   ;:bind (("C-c n l" . org-roam)
   ;       ("C-c n f" . org-roam-find-file)
   ;       ("C-c n g" . org-roam-graph))
-  :hook
-  (after-init . org-roam-mode)
+
+  ;:hook
+  ;(after-init . org-roam-mode)
+
+  :config
   (org-roam-db-autosync-mode)
 )
+
+;; insert org roam node immediate
+(defun org-roam-node-insert-immediate (arg &rest args)
+  (interactive "P")
+  (let ((args (cons arg args))
+        (org-roam-capture-templates (list (append (car org-roam-capture-templates)
+                                                  '(:immediate-finish t)))))
+    (apply #'org-roam-node-insert args)
+  )
+)
+(global-set-key (kbd "C-c i") 'org-roam-node-insert-immediate)
+
 
 (use-package org-download
   :ensure t
@@ -255,6 +274,7 @@ This function is added to the `ef-themes-post-load-hook'."
   (setq org-download-image-org-width 100)
   (setq-default org-download-image-dir "~/personal_projects/note")
 )
+
 
 ;(with-eval-after-load 'org-download
 ;  (setq org-download-method 'directory)
