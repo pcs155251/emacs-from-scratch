@@ -239,12 +239,12 @@ This function is added to the `ef-themes-post-load-hook'."
   :init
   (setq org-roam-v2-ack t)
   :custom
-  (org-roam-directory "/Volumes/data/Syncthing/public/simple-note/pages") ; path-needs-to-change
+  (org-roam-directory "/Volumes/data/Syncthing/public/note/pages") ; path-needs-to-change
   (org-roam-completion-everywhere t)
   (org-roam-capture-templates
    '(("d" "default" plain
       "* %?"
-      :target (file+head "${title}.org" "#+title: ${title}")
+      :target (file+head "${slashslug}.org" "#+title: ${title}")
       :unnarrowed t
       :empty-lines 1
       ))
@@ -270,6 +270,10 @@ This function is added to the `ef-themes-post-load-hook'."
   )
 )
 (global-set-key (kbd "C-c i") 'org-roam-node-insert-immediate)
+;; org roam slug function, downcase and replace "_" by "-"
+(defun org-roam-node-slashslug (node)
+  (downcase (replace-regexp-in-string "_" "-" (org-roam-node-slug node)))
+)
 
 (use-package org-download
   :ensure t
@@ -280,19 +284,8 @@ This function is added to the `ef-themes-post-load-hook'."
   ;; This changes the directory where images are stored.
   (setq org-image-actual-width nil)
   (setq org-download-image-org-width 100)
-  (setq-default org-download-image-dir "/Volumes/data/Syncthing/public/simple-note/assets") ; path-needs-to-change
+  (setq-default org-download-image-dir "/Volumes/data/Syncthing/public/note/assets") ; path-needs-to-change
 )
-
-
-;(with-eval-after-load 'org-download
-;  (setq org-download-method 'directory)
-;  (setq org-download-image-dir (concat (file-name-sans-extension (buffer-file-name)) "-img"))
-;  (setq org-download-image-org-width 600)
-;  (setq org-download-link-format "[[file:%s]]\n"
-;     org-download-abbreviate-filename-function #'file-relative-name)
-;  (setq org-download-link-format-function #'org-download-link-format-function-default)
-;)
-
 
 
 ;;When installing a package which modifies a form used at the top-level
