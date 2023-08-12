@@ -239,7 +239,7 @@ This function is added to the `ef-themes-post-load-hook'."
   :init
   (setq org-roam-v2-ack t)
   :custom
-  (org-roam-directory "~/personal_projects/note")
+  (org-roam-directory "/Volumes/data/Syncthing/public/simple-note/pages") ; path-needs-to-change
   (org-roam-completion-everywhere t)
   (org-roam-capture-templates
    '(("d" "default" plain
@@ -280,7 +280,7 @@ This function is added to the `ef-themes-post-load-hook'."
   ;; This changes the directory where images are stored.
   (setq org-image-actual-width nil)
   (setq org-download-image-org-width 100)
-  (setq-default org-download-image-dir "~/personal_projects/note")
+  (setq-default org-download-image-dir "/Volumes/data/Syncthing/public/simple-note/assets") ; path-needs-to-change
 )
 
 
