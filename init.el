@@ -249,9 +249,11 @@ This function is added to the `ef-themes-post-load-hook'."
       :empty-lines 1
       ))
    )
-  ;:bind (("C-c n l" . org-roam)
-  ;       ("C-c n f" . org-roam-find-file)
-  ;       ("C-c n g" . org-roam-graph))
+  :bind (
+    ("C-c n t" . org-roam-buffer-toggle)
+    ("C-c n f" . org-roam-node-find)
+  ;       ("C-c n g" . org-roam-graph)
+  )
 
   ;:hook
   ;(after-init . org-roam-mode)
@@ -269,7 +271,7 @@ This function is added to the `ef-themes-post-load-hook'."
     (apply #'org-roam-node-insert args)
   )
 )
-(global-set-key (kbd "C-c i") 'org-roam-node-insert-immediate)
+(global-set-key (kbd "C-c n i") 'org-roam-node-insert-immediate)
 ;; org roam slug function, downcase and replace "_" by "-"
 (defun org-roam-node-slashslug (node)
   (downcase (replace-regexp-in-string "_" "-" (org-roam-node-slug node)))
